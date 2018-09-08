@@ -33,7 +33,7 @@ module.exports = (async (access_token,input) => {
 	const yaml = await safeLoad(contents);
 	entry.id = yaml[yaml.length-1].id+1
 	entry.name = parse(input.url).hostname.replace('www.','');
-	var PRString = 'Added: ' + entry.name + ". "
+	var PRString = 'Added: ' + entry.name + ".<br/>"
 
 	if( input.url ) {
 		entry.url = input.url
@@ -43,21 +43,21 @@ module.exports = (async (access_token,input) => {
 		PRString += 'Category: ' + entry.category + ". "
 	} else if( !input.category ) {
 		entry.category = 'Scamming'
-		PRString += 'Category: ' + entry.category + ". "
+		PRString += 'Category: ' + entry.category + ".<br/>"
 	}
 	if( input.subcategory ) {
 		entry.subcategory = input.subcategory
-		PRString += 'SubCategory: ' + entry.subcategory + ". "
+		PRString += 'SubCategory: ' + entry.subcategory + ".<br/>"
 	} else if( !input.subcategory ) {
 		entry.subcategory = 'Trust-Trading'
-		PRString += 'SubCategory: ' + entry.subcategory + ". "
+		PRString += 'SubCategory: ' + entry.subcategory + ".<br/>"
 	}
 	if( input.description ) {
 		entry.description = input.description
-		PRString += 'Description: ' + entry.description + ". "
+		PRString += 'Description: ' + entry.description + ".<br/>"
 	} else if( !input.description ) {
 		entry.description = 'AutoDetected by ETH Anti-Phishing Workgroup'
-		PRString += 'Description: ' + entry.description + ". "
+		PRString += 'Description: ' + entry.description + ".<br/>"
 	}
 	if( input.url ) {
 		entry.url = input.url
@@ -70,7 +70,7 @@ module.exports = (async (access_token,input) => {
 	}
 	if( input.urlscanuuid ) {
 		urlscan = input.urlscanuuid
-		PRString += 'Urlscan Link: https://urlscan.io/result/' + urlscan + ". "
+		PRString += 'Urlscan Link: https://urlscan.io/result/' + urlscan + ".<br/>"
 	}
 	var scampresent = false;
 	yaml.forEach(function(scam) {
