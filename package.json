@@ -1,0 +1,32 @@
+{
+  "name": "esdb-autopr",
+  "version": "0.0.1",
+  "description": "AutoPullRequest for EtherScamDB data",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index --trace-warnings"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ethangels/esdb-autopr.git"
+  },
+  "keywords": [
+    "phishing"
+  ],
+  "author": "blurpesec",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ethangels/esdb-autopr/issues"
+  },
+  "homepage": "https://github.com/ethangels/esdb-autopr#readme",
+  "dependencies": {
+    "download": "^7.1.0",
+    "github-api": "^3.0.0",
+    "js-yaml": "^3.12.0",
+    "node-fetch": "^2.2.0",
+    "octonode": "^0.9.4",
+    "open": "0.0.5",
+    "prompt": "^1.0.0",
+    "sha1-regex": "^1.0.0"
+  }
+}
