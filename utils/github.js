@@ -5,9 +5,10 @@ const download = require('download');
 const getSha = require('./getSha.js')
 
 const Content = class Content {
-	constructor(repo, sha) {
+	constructor(repo, sha, accessToken) {
 		this.repo = repo;
-		this.sha = sha
+		this.sha = sha;
+		this.accessToken = accessToken
 	}
 
 	update(path,message,content) {
@@ -24,9 +25,10 @@ const Content = class Content {
 }
 
 const Repo = class Repo {
-	constructor(client,repo) {
+	constructor(client,repo, accessToken) {
 		this.client = client;
 		this.parent = repo;
+		this.accessToken = accessToken;
 		this.repo = client.repo(repo.full_name);
 	}
 
@@ -38,16 +40,16 @@ const Repo = class Repo {
 		return this.parent.default_branch;
 	}
 
-	contents(path) {
+	contents(path, accessToken) {
 		return new Promise((resolve,reject) => {
 			this.repo.contents(path, async (err,result) => {
 				if(err) {
-					var sha = await getSha().then(function(output) {
+					var sha = await getSha(accessToken).then(function(output) {
 						return(output);
 					})
-					resolve(new Content(this.repo,sha));
+					resolve(new Content(this.repo,sha, accessToken));
 				} else {
-					resolve(new Content(this.repo,result.sha));
+					resolve(new Content(this.repo,result.sha, accessToken));
 				}
 			});
 		});
@@ -59,13 +61,13 @@ const Github = class Github {
 		this.client = github.client(access_token);
 	}
 
-	fork(repo) {
+	fork(repo, accessToken) {
 		return new Promise((resolve,reject) => {
 			this.client.me().fork(repo, (err,result) => {
 				if(err) {
 					reject(err);
 				} else {
-					resolve(new Repo(this.client,result));
+					resolve(new Repo(this.client, result, accessToken));
 				}
 			});
 		});

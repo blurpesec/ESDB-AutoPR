@@ -12,14 +12,8 @@ var input = {
   "urlscanuuid": '9c2ff47f-d080-461a-a19a-577a050b7b35'
 }
 var start = async () => {
-    output = pr(token.token, input)
-    if( output.statuscode === 0 ) {
-        console.log('Status: ' + output.statuscode)
-        console.log(output.message);
-    } else if( output.statuscode === 1 ) {
-        console.log('Status: ' + output.statuscode)
-        console.log(output.message);
-    }
+    var output = await pr(token.token, input)
+    console.log( JSON.stringify( output, null, 2 ) )
 }
 
 start();

@@ -4,7 +4,7 @@ AutoPullRequest Data for EtherScamDB
 This is based on previous work by [MrLuit](https://github.com/mrluit) in [esdb-cli](https://github.com/mrluit/esdb-cli)
 
 ###### To install:
-`npm i epd-autopr`
+`npm i esdb-autopr`
 
 
 ###### To use:

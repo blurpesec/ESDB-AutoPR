@@ -1,10 +1,5 @@
 const GitHub = require('github-api')
 const fetch = require('node-fetch')
-const accessToken = require('../token.json').token;
-
-const gh = new GitHub({
-  token: accessToken
-});
 
 const username = 'mrluit';
 const repoName = 'etherscamdb';
@@ -14,8 +9,11 @@ const filePath = '_data/scams.yaml'
 var fileName = filePath.split(/(\\|\/)/g).pop();
 var fileParent = filePath.substr(0, filePath.lastIndexOf("/"));
 
-var repo = gh.getRepo(username, repoName);
-module.exports = async () => {
+module.exports = async (accessToken) => {
+    const gh = new GitHub({
+      token: accessToken
+    });
+    var repo = gh.getRepo(username, repoName);
     return new Promise(function(resolve, reject) {
         fetch('https://api.github.com/repos/' +
               username + '/' +
