@@ -1,6 +1,6 @@
 {
   "name": "esdb-autopr",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "AutoPullRequest for EtherScamDB data",
   "main": "index.js",
   "scripts": {
